@@ -61,8 +61,7 @@ BasePage {
         // enable WiFi by default
         service.call("luna://com.palm.wifi/setstate", JSON.stringify({"state":"enabled"}), setStateSuccess, setStateFailure);
         service.call("luna://com.palm.wan/set", JSON.stringify({"disablewan":"off"}), setDisableWanSuccess, setDisableWanFailure)
-        service.call("luna://com.palm.wifi/findnetworks","{}",findNetworksSuccess, findNetworksFailure);
-        service.call("luna://com.palm.wifi/findnetworks","{'subscribe':true}",findNetworksSuccess, findNetworksFailure);
+        service.subscribe("luna://com.palm.wifi/findnetworks","{'subscribe':true}",findNetworksSuccess, findNetworksFailure);
 
         function setStateSuccess(message)
         {
